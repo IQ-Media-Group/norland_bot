@@ -5,11 +5,11 @@ class Settings(BaseSettings):
     """
     Database settings. Values from .env file
     """
-    DB_HOST: str
-    DB_PORT: int
-    DB_USER: str
-    DB_PASSWORD: str
-    DB_NAME: str
+    # DB_HOST: str
+    # DB_PORT: int
+    # DB_USER: str
+    # DB_PASSWORD: str
+    # DB_NAME: str
     TOKEN: str
 
     @property
