@@ -42,7 +42,6 @@ async def get_email(mes: Message, state: FSMContext):
      подарки и скидки.")
         await state.update_data(email=mes.text)
         await state.set_state(Form.phone)
-        await del_msg.delete()
     else:
         await mes.answer(text="Неверный формат почты. Попробуйте ещё раз. Например, example@example.com")
         await state.set_state(Form.email)
