@@ -57,7 +57,6 @@ async def get_name(mes: Message, state: FSMContext):
 # @router.message(F.text == "Регистрация")
 async def start_reg(mes: Message, state: FSMContext):
     if get_user(mes.from_user.id):
-        await mes.answer(text="Вы уже зарегистрированы")
         return
     await mes.answer(text="Давайте знакомиться! Как вас зовут? Напишите свое ФИО")
     await state.update_data(tg_id=mes.from_user.id)
