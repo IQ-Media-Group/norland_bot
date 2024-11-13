@@ -45,9 +45,3 @@ async def start(mes: Message):
 
 Давайте начнем!  😉""", reply_markup=main_kb_as_markup(mes.from_user.id))
     await mes.delete()
-
-
-@router.message()
-async def test(mes: Message):
-    print(get_user(mes.from_user.id))
-    await mes.answer(text="Тест")
