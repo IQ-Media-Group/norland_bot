@@ -1,16 +1,18 @@
 from aiogram import Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
+from aiogram.fsm.context import FSMContext
 
 from core.keyboards.main_kb import main_kb_as_markup
 from core.db.scripts import get_user
+from core.routers.registration import start_reg
 
 
 router = Router()
 
 
 @router.message(CommandStart())
-async def start(mes: Message):
+async def start(mes: Message, state: FSMContext):
     await mes.answer(text="""Привет! 👋  Рада приветствовать вас в чате  Norland Academy! 
 
 Хотите  освоить новую профессию  и  кардинально  изменить  свою  жизнь? 💫
@@ -45,3 +47,4 @@ async def start(mes: Message):
 
 Давайте начнем!  😉""", reply_markup=main_kb_as_markup(mes.from_user.id))
     await mes.delete()
+    await start_reg(mes, state)
