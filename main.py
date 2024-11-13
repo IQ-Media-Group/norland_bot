@@ -13,8 +13,8 @@ def register_messages(dp: Dispatcher):
     Routers registration
     :param dp:
     """
-    dp.include_router(main_router.router)
     dp.include_router(registration.router)
+    dp.include_router(main_router.router)
 
 
 async def start():
