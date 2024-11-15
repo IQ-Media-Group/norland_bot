@@ -41,8 +41,9 @@ async def get_phone(mes: Message, state: FSMContext):
 @router.message(Form.email)
 async def get_email(mes: Message, state: FSMContext):
     if email_validator(mes.text):
-        await mes.answer(text="Отличная почта! Теперь мне нужен ваш телефон, он нужен для того, чтобы отправлять вам\
-     подарки и скидки.")
+        await mes.answer(
+            text="Спасибо! Теперь мне нужен ваш телефон, он нужен для того, чтобы отправлять вам подарки и скидки."
+        )
         await state.update_data(email=mes.text)
         await state.set_state(Form.phone)
     else:

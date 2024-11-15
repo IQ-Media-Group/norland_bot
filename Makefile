@@ -1,5 +1,7 @@
 restart:
-	poetry run python main.py
+	git fetch
+	git pull
+	docker compose up --build -d
 
 install:
 	poetry install --no-root
