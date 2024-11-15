@@ -4,6 +4,7 @@ from aiogram.types import Message
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram import F
+from aiogram.types.input_file import FSInputFile
 
 from core.states.registration import Form
 from core.validators.phone import validate_phone_number
@@ -17,8 +18,10 @@ router = Router()
 async def show_form(mes: Message, state: FSMContext):
     data = await state.get_data()
     create_user(data.get('tg_id'), data.get('name'), data.get('email'), data.get('phone'))
-    await mes.answer(text="Супер! Теперь я смогу делиться с вами скидками и присылать подарки.",
-                     reply_markup=main_kb_as_markup(mes.from_user.id))
+    await mes.answer_document(document=FSInputFile(path="static/gid.pdf", filename="Как принять верное решение.pdf"),
+                              caption="""Супер! Теперь я смогу делиться с вами скидками и присылать подарки.
+                              
+Получите Гайд "Как принять верное решение" в благодарность за ваше участие.""", )
     await state.clear()
 
 
