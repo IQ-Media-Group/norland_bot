@@ -29,7 +29,7 @@ async def show_form(mes: Message, state: FSMContext):
 async def get_phone(mes: Message, state: FSMContext):
     status, phone = validate_phone_number(mes.text)
     if status:
-        await state.update_data(phone=mes.text)
+        await state.update_data(phone=phone)
         await state.set_state(Form.phone)
         await show_form(mes, state)
     else:
